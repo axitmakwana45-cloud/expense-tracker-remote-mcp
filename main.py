@@ -13,13 +13,19 @@ from fastmcp.server.auth.providers.jwt import StaticTokenVerifier
 load_dotenv()
 
 auth = StaticTokenVerifier(
-    tokens=[os.getenv("MCP_TOKEN")]
+    tokens={
+        os.getenv("MCP_TOKEN"): {
+            "client_id": "axit",
+            "scopes": ["*"]
+        }
+    }
 )
 
 mcp = FastMCP(
     "Expense Tracker",
     auth=auth
 )
+print("Token:", os.getenv("MCP_TOKEN"))
 
 DB_PATH = os.path.join(os.path.dirname(__file__), "expenses.db")
 CATEGORIES_PATH = os.path.join(os.path.dirname(__file__), "category.json")
