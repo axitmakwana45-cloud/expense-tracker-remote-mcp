@@ -6,6 +6,20 @@ import csv
 import io
 from datetime import datetime
 from contextlib import contextmanager
+from dotenv import load_dotenv
+
+from fastmcp.server.auth.providers.jwt import StaticTokenVerifier
+
+load_dotenv()
+
+auth = StaticTokenVerifier(
+    tokens=[os.getenv("MCP_TOKEN")]
+)
+
+mcp = FastMCP(
+    "Expense Tracker",
+    auth=auth
+)
 
 DB_PATH = os.path.join(os.path.dirname(__file__), "expenses.db")
 CATEGORIES_PATH = os.path.join(os.path.dirname(__file__), "category.json")
