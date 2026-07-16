@@ -24,8 +24,6 @@ mcp = FastMCP(
 DB_PATH = os.path.join(os.path.dirname(__file__), "expenses.db")
 CATEGORIES_PATH = os.path.join(os.path.dirname(__file__), "category.json")
 
-mcp = FastMCP("ExpenseTracker")
-
 
 # ---------- helpers ----------
 
