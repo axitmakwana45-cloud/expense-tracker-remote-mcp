@@ -12,18 +12,10 @@ from fastmcp.server.auth.providers.jwt import StaticTokenVerifier
 
 load_dotenv()
 
-auth = StaticTokenVerifier(
-    tokens={
-        os.getenv("MCP_TOKEN"): {
-            "client_id": "axit",
-            "scopes": ["*"]
-        }
-    }
-)
 
 mcp = FastMCP(
     "Expense Tracker",
-    auth=auth
+    
 )
 print("Token:", os.getenv("MCP_TOKEN"))
 
